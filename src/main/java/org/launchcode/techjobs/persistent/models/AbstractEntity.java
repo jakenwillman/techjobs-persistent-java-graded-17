@@ -9,10 +9,19 @@ import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
 
+// Add the @MappedSuperclass annotation to the AbstractEntity class
+@MappedSuperclass
 public abstract class AbstractEntity {
-
+    // Add the @Id and @GeneratedValue annotations to the id field
+    @Id
+    @GeneratedValue
     private int id;
 
+    // Add appropriate validation annotations on the name field so that:
+    // 1. a user cannot leave the name field blank
+    // 2. there are reasonable limitations on the size of the name string
+    @NotNull
+    @Size(min = 2, max = 100)
     private String name;
 
     public int getId() {

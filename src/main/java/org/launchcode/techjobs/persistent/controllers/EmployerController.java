@@ -2,6 +2,7 @@ package org.launchcode.techjobs.persistent.controllers;
 
 import jakarta.validation.Valid;
 import org.launchcode.techjobs.persistent.models.Employer;
+import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,16 @@ import java.util.Optional;
 @Controller
 @RequestMapping("employers")
 public class EmployerController {
+
+    // give the employerRepository field an @Autowired annotation
+    @Autowired
+    // Add private field of EmployerRepository type called employerRepository
+    private EmployerRepository employerRepository;
+
+    //    CONTINUE HERE AT TASK 2: CONTROLLERS STEP 2!!
+    //    CONTINUE HERE AT TASK 2: CONTROLLERS STEP 2!!
+    //    CONTINUE HERE AT TASK 2: CONTROLLERS STEP 2!!
+    //    CONTINUE HERE AT TASK 2: CONTROLLERS STEP 2!!
 
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
