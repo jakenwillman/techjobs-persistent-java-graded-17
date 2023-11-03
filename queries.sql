@@ -1,14 +1,19 @@
 --Part 1
 -- List the columns from the job table and their data types
--- Column Name || Data Type
-------------------------------------
--- id          || INT
--- employer    || VARCHAR(255)
--- name        || VARCHAR(255)
--- skills      || VARCHAR(255)
+---------------------------------------------------------------------------
 
+-- id(INT)
+-- employer(VARCHAR)
+-- name(VARCHAR)
+-- skills(VARCHAR)
 
 --Part 2
+-- write an SQL query to list the names of employers only in St. Louis City
+----------------------------------------------------------------------------
+
+SELECT name
+FROM employer
+WHERE location = "St. Louis City";
 
 --Part 3
 

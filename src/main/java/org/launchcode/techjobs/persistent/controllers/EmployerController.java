@@ -17,13 +17,18 @@ public class EmployerController {
 
     // give the employerRepository field an @Autowired annotation
     @Autowired
+
     // Add private field of EmployerRepository type called employerRepository
     private EmployerRepository employerRepository;
 
-    //    CONTINUE HERE AT TASK 2: CONTROLLERS STEP 2!!
-    //    CONTINUE HERE AT TASK 2: CONTROLLERS STEP 2!!
-    //    CONTINUE HERE AT TASK 2: CONTROLLERS STEP 2!!
-    //    CONTINUE HERE AT TASK 2: CONTROLLERS STEP 2!!
+    // Add an index method that responds at /employers
+    @GetMapping("/")
+    public String index(Model model) {
+    // pass employers into the view using model.addAttribute to show a list of all employers in the database with findAll() method
+    model.addAttribute("employers", employerRepository.findAll());
+    // this method should use the template employers/index
+        return "employers/index";
+    }
 
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
@@ -34,20 +39,20 @@ public class EmployerController {
     @PostMapping("add")
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
                                     Errors errors, Model model) {
-
         if (errors.hasErrors()) {
             return "employers/add";
         }
-
+        // add a method to save a valid employer object using the newEmployer object
+        employerRepository.save(newEmployer);
         return "redirect:";
     }
 
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
-
-        Optional optEmployer = null;
+        // replace the null value of optEmployer using the findById method passing in the employerId to look for a specific employer object in the database
+        Optional<Employer> optEmployer = employerRepository.findById(employerId);
         if (optEmployer.isPresent()) {
-            Employer employer = (Employer) optEmployer.get();
+            Employer employer = optEmployer.get();
             model.addAttribute("employer", employer);
             return "employers/view";
         } else {
