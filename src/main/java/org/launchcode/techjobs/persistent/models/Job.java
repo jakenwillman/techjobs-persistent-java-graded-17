@@ -1,57 +1,69 @@
 package org.launchcode.techjobs.persistent.models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Job {
+// Update the class definition of Job to extend AbstractEntity
+public class Job extends AbstractEntity {
+// remove the redundant name and id fields that are being inherited from AbstractEntity
+//    @Id
+//    @GeneratedValue
+//    private int id;
+//
+//    private String name;
 
-    @Id
-    @GeneratedValue
-    private int id;
 
-    private String name;
-    private String employer;
-    private String skills;
+//  replace the type of the field employer to be of type Employer
+//  add @ManyToOne annotation to the updated field Employer
+//  private String employer;
+    @ManyToOne
+    private Employer employer;
+
+    // refactored skills field to be a list of Skill objects
+    @ManyToMany
+    private List<Skill> skills;
 
 
     public Job() {
     }
 
     // Initialize the id and value fields.
-    public Job(String anEmployer, String someSkills) {
+    // refactor affected methods from changing the employer type to Employer and skill type to List<Skill>
+    public Job(Employer employer, List<Skill> skills) {
         super();
-        this.employer = anEmployer;
-        this.skills = someSkills;
+        this.employer = employer;
+        this.skills = skills;
     }
 
     // Getters and setters.
     
-    public String getName() {
-        return name;
-    }
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmployer() {
+    // refactored getter and setter for new Employer type
+    public Employer getEmployer() {
         return employer;
     }
 
-    public void setEmployer(String employer) {
+    public void setEmployer(Employer employer) {
         this.employer = employer;
     }
 
-    public String getSkills() {
+    // refactored getter and setter for new skills type
+    public List<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(String skills) {
+    public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
 

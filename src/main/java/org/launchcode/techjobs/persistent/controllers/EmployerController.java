@@ -17,7 +17,6 @@ public class EmployerController {
 
     // give the employerRepository field an @Autowired annotation
     @Autowired
-
     // Add private field of EmployerRepository type called employerRepository
     private EmployerRepository employerRepository;
 
