@@ -1,11 +1,11 @@
 --Part 1
--- List the columns from the job table and their data types
+-- List the columns from the job table and their data types using SQL comments
 ---------------------------------------------------------------------------
 
-id(INT)
-employer(VARCHAR)
-name(VARCHAR)
-skills(VARCHAR)
+--id(INT, pk)
+--employer(VARCHAR)
+--name(VARCHAR)
+--skills(VARCHAR)
 
 --Part 2
 -- write an SQL query to list the names of employers only in St. Louis City

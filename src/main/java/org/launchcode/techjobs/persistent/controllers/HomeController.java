@@ -37,9 +37,8 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index(Model model) {
-
         model.addAttribute("title", "MyJobs");
-
+        model.addAttribute("jobs", jobRepository.findAll());
         return "index";
     }
 
@@ -73,6 +72,7 @@ public class HomeController {
         // set the selected skills for the job
         newJob.setSkills(skillObjs);
 
+        jobRepository.save(newJob);
         return "redirect:";
     }
 
